@@ -1,6 +1,7 @@
 import pygame
 import random
 from enum import Enum
+from collections import namedtuple
 pygame.init()
 
 class Direction(Enum):
@@ -8,6 +9,8 @@ class Direction(Enum):
     LEFT=2
     UP=3
     DOWN=4
+
+Point=namedtuple('Point','x','y')
 
 class SnakeGame:
 
@@ -21,7 +24,9 @@ class SnakeGame:
         self.clock=pygame.time.Clock()
 
         #init game state
-        self.direction=""
+        self.direction=Direction.RIGHT
+
+        self.head=(self.w, self.h)
 
     def play_step(self):
         pass

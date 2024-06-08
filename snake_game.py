@@ -10,7 +10,9 @@ class Direction(Enum):
     UP=3
     DOWN=4
 
-Point=namedtuple('Point','x','y')
+Point=namedtuple('Point','x,y')
+
+BLOCK_SIZE=20
 
 class SnakeGame:
 
@@ -26,21 +28,42 @@ class SnakeGame:
         #init game state
         self.direction=Direction.RIGHT
 
-        self.head=(self.w, self.h)
+        self.head=Point(self.w, self.h)
+        self.snake=[self.head, 
+                    Point(self.head.x-BLOCK_SIZE, self.head.y),
+                    Point(self.head.x-(2*BLOCK_SIZE), self.head.y)]
+    
+        self.score=0
+        self.food=None
+        self._place_food()
+
+    def _place_food(self):
+        x=random.randint(0, (self.w-BLOCK_SIZE)//BLOCK_SIZE)+BLOCK_SIZE
+        y=random.randint(0, (self.h-BLOCK_SIZE)//BLOCK_SIZE)+BLOCK_SIZE
+
+        self.food=Point(x,y)
+
+        if self.food in self.snake:
+            self._place_food()
+
 
     def play_step(self):
-        pass
-
+        
+        game_over=False
+        return game_over, self.score
+    
 
 
 if __name__=='__main__':
     game= SnakeGame()
  
     while True:
-        game.play_step()
+        game_over, score=game.play_step()
 
+        if game_over == True:
+            break
 
-    #break if game over
+    print('Final Score',score)
 
-        pygame.quit()
+    pygame.quit()
 

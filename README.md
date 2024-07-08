@@ -2,6 +2,8 @@
 
 Welcome to the Snake Game! This classic game is developed using Python and Pygame. Enjoy navigating the snake to eat the food while avoiding running into the walls or itself.
 
+![Snake Game](https://harsha-g.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FSnake_game.266e0198.png&w=640&q=75) 
+
 ### 📜 Overview
 
 In this game, you control a snake that moves around the screen. The objective is to eat as many food items as possible without hitting the walls or the snake's own body. Each time the snake eats a piece of food, it grows longer, making the game progressively more challenging.
